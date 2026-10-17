@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Interview AI - Dashboard Page Styles
+   ========================================================================== */
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+@media (max-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Welcome Box */
+.welcome-box {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.18) 0%, rgba(14, 29, 54, 0.9) 50%, rgba(99, 102, 241, 0.08) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(37, 99, 235, 0.08);
+}
+
+.welcome-box h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* Continue Practice Widget */
+.continue-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .continue-widget {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.continue-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.continue-info p {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+/* Circular Readiness Gauge */
+.readiness-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.readiness-gauge {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 20px;
+}
+
+.readiness-gauge svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.readiness-gauge circle {
+  fill: none;
+  stroke-width: 12;
+}
+
+.readiness-gauge .bg-circle {
+  stroke: var(--bg-tertiary);
+}
+
+.readiness-gauge .progress-circle {
+  stroke: var(--accent-blue);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+}
+
+.readiness-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.readiness-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Recent Attempts Table/List */
+.attempts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.attempt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: rgba(11, 25, 48, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.attempt-row:hover {
+  background: rgba(14, 29, 54, 0.8);
+  border-color: rgba(59, 130, 246, 0.25);
+  transform: translateX(4px);
+}
+
+.attempt-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.attempt-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.attempt-score-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.attempt-score {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.score-high {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent-emerald);
+}
+
+.score-mid {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent-warning);
+}
+
+.score-low {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-danger);
+}
+
+/* Weak Areas Grid */
+.weak-areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.weak-area-pill {
+  padding: 8px 16px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f87171;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weak-area-pill::before {
+  content: '⚠️';
+  font-size: 0.85rem;
+}
+
+/* Profile Form Layout */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Recommended Practice Box */
+.recommendation-box {
+  background: rgba(14, 165, 233, 0.03);
+  border-left: 4px solid var(--accent-blue);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin: 16px 0;
+}
+
+.recommendation-box h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recommendation-box p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Attempt Graph Visual */
+.graph-container {
+  height: 150px;
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
+}
+
+.graph-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.graph-bar {
+  width: 24px;
+  background: linear-gradient(to top, rgba(37, 99, 235, 0.3), #3B82F6, #6366F1);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+.graph-bar:hover {
+  filter: brightness(1.2);
+}
+
+.graph-bar-tooltip {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.graph-bar:hover .graph-bar-tooltip {
+  opacity: 1;
+}
+
+.graph-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}

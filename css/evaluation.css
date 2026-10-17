@@ -1,0 +1,351 @@
+/* ==========================================================================
+   Interview AI - Evaluation Page Styles
+   ========================================================================== */
+
+.eval-layout {
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Header Summary Block */
+.eval-summary-card {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Performance level badges */
+.perf-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: capitalize;
+}
+.perf-badge.strong, .perf-badge.excellent { background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.perf-badge.good { background: rgba(59, 130, 246, 0.15); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); }
+.perf-badge.needs-improvement, .perf-badge.needs-more-practice, .perf-badge.needs-more-preparation { background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); }
+.perf-badge.weak { background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+@media (max-width: 768px) {
+  .eval-summary-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.score-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+  border: 4px solid var(--accent-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.25), 0 0 80px rgba(59, 130, 246, 0.08);
+  margin-bottom: 12px;
+}
+
+.score-circle-num {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-circle-denom {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.eval-summary-info h1 {
+  font-size: 2.25rem;
+  margin-bottom: 12px;
+}
+
+.eval-summary-info p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* Criteria Grid & Progress Meters */
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .criteria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .criteria-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.criteria-card {
+  padding: 20px;
+  background: rgba(11, 25, 48, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.criteria-card:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  transform: translateY(-2px);
+}
+
+.criteria-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.criteria-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.criteria-value {
+  font-weight: 800;
+  color: var(--accent-blue);
+}
+
+.criteria-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  height: 38px;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.meter-track {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s ease-out;
+}
+
+/* Strengths and Weaknesses Cards */
+.analysis-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .analysis-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.bullet-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+.bullet-list.strengths-list li::before {
+  content: '✓';
+  color: var(--accent-emerald);
+  font-weight: 900;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.bullet-list.weaknesses-list li::before {
+  content: '⚠️';
+  color: var(--accent-warning);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+/* Recommendations Card */
+.coach-recommendations {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(15, 22, 38, 0.8) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.coach-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.coach-icon {
+  font-size: 1.75rem;
+}
+
+.coach-recommendations p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Review Accordion */
+.review-header-title {
+  margin-bottom: 20px;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-item {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.review-item-trigger {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+
+.review-item:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.review-summary {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+.review-q-num {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  background: rgba(14, 165, 233, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.review-q-text {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 450px;
+}
+
+@media (max-width: 768px) {
+  .review-q-text {
+    max-width: 200px;
+  }
+}
+
+.review-score-badge {
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.review-item-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 0px solid var(--border-color);
+  padding: 0 24px;
+}
+
+.review-item.active .review-item-content {
+  max-height: 2000px;
+  padding: 24px;
+  border-top-width: 1px;
+}
+
+.review-detail-row {
+  margin-bottom: 20px;
+}
+
+.review-detail-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.review-detail-val {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.review-detail-val.transcript {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-emerald);
+}
+
+.review-chevron {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.review-item.active .review-chevron {
+  transform: rotate(180deg);
+  color: var(--text-primary);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>CampusConnect — JECRC University</title>
+  <meta name="description" content="Find People. Find Activities. Find Your Place on Campus.">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons (Lucide via CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div id="cc-app">
+
+    <!-- Top Header (shown when logged in) -->
+    <header id="cc-header" class="cc-header hidden"></header>
+
+    <!-- Main Content Area -->
+    <main id="cc-main" class="cc-main"></main>
+
+    <!-- Bottom Navigation (mobile, shown when logged in) -->
+    <nav id="cc-bottom-nav" class="cc-bottom-nav hidden"></nav>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="cc-toast" class="cc-toast hidden"></div>
+
+  <!-- Global Modal Overlay -->
+  <div id="cc-modal-overlay" class="cc-modal-overlay hidden">
+    <div id="cc-modal" class="cc-modal"></div>
+  </div>
+
+  <!-- Notification Panel -->
+  <div id="cc-notif-panel" class="cc-notif-panel hidden"></div>
+
+  <!-- JS Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/components/bottomnav.js"></script>
+  <script src="js/components/notifications.js"></script>
+  <script src="js/components/modals.js"></script>
+  <script src="js/pages/landing.js"></script>
+  <script src="js/pages/onboarding.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/freenow.js"></script>
+  <script src="js/pages/campus.js"></script>
+  <script src="js/pages/discover.js"></script>
+  <script src="js/pages/activities.js"></script>
+  <script src="js/pages/events.js"></script>
+  <script src="js/pages/messages.js"></script>
+  <script src="js/pages/profile.js"></script>
+  <script src="js/pages/admin.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

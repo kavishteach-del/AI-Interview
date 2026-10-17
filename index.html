@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview AI - Experience the Interview Before You Face It</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/simulator.css">
+  <link rel="stylesheet" href="css/evaluation.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <!-- PDF.js library for client-side PDF CV text extraction -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <!-- Proctoring System Styles -->
+  <link rel="stylesheet" href="css/proctoring.css">
+  <!-- KaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <!-- JEE CBT Mock Test Styles -->
+  <link rel="stylesheet" href="css/jee.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header id="app-header">
+    <div class="container nav-container">
+      <div class="logo" id="nav-logo">
+        INTERVIEW <span>AI</span>
+      </div>
+      <nav>
+        <ul id="nav-links" class="hidden">
+          <li><a id="link-dashboard">Dashboard</a></li>
+          <li><a id="link-library">Explore</a></li>
+          <li><a id="link-jee" style="color:var(--accent-blue-electric, #2563eb);font-weight:600;cursor:pointer;">JEE Mock Test</a></li>
+          <li><a id="link-admin">Admin</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" id="header-auth-buttons">
+        <button class="btn btn-primary" id="btn-signup-trigger">Get Started</button>
+      </div>
+      <div class="user-menu hidden" id="header-user-menu">
+        <button class="btn btn-secondary" id="btn-profile-trigger">Profile</button>
+        <button class="btn btn-outline" id="btn-logout">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dynamic View Container -->
+  <main id="app-root">
+    <!-- Pages will be rendered here dynamically -->
+  </main>
+
+  <!-- Global Footer -->
+  <footer id="app-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">INTERVIEW <span>AI</span></div>
+          <p>India's realistic AI interview preparation and simulation platform. Practice anytime, anywhere based on public documented patterns.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Simulations</h4>
+          <ul>
+            <li><a id="footer-link-cabin">Cabin Crew</a></li>
+            <li><a id="footer-link-jee" style="cursor:pointer;color:#38bdf8;">JEE Mock Test (Main & Adv)</a></li>
+            <li><a class="text-muted">Banking (Soon)</a></li>
+            <li><a class="text-muted">UPSC CSE (Soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Platform</h4>
+          <ul>
+            <li><a id="footer-link-about">How It Works</a></li>
+            <li><a id="footer-link-faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <div>© 2026 Interview AI. All rights reserved.</div>
+        <div>Not affiliated with official recruiting bodies. Prepared based on public patterns.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal (Login / Sign Up) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal">
+      <button class="modal-close" id="auth-modal-close">×</button>
+      
+      <!-- Segment Switcher Options -->
+      <div style="display: flex; gap: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+        <button class="btn btn-primary" id="tab-login-btn" style="flex: 1; font-size: 0.9rem; padding: 8px 16px;">1st Option: Login</button>
+        <button class="btn btn-secondary" id="tab-signup-btn" style="flex: 1; font-size: 0.9rem; padding: 8px 16px;">2nd Option: Create Account</button>
+      </div>
+      
+      <!-- Login Form View -->
+      <div id="login-view">
+        <h3 class="text-center" style="margin-bottom: 20px;">Log In to Your Account</h3>
+        <div class="alert hidden" id="login-error-alert" style="color: var(--accent-danger); margin-bottom: 16px; font-weight: 600; font-size: 0.85rem;"></div>
+        <form id="form-login">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-control" placeholder="name@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Log In</button>
+        </form>
+      </div>
+
+      <!-- Sign Up Form View -->
+      <div id="signup-view" class="hidden">
+        <h3 class="text-center" style="margin-bottom: 20px;">Register New Candidate</h3>
+        <div class="alert hidden" id="signup-error-alert" style="color: var(--accent-danger); margin-bottom: 16px; font-weight: 600; font-size: 0.85rem;"></div>
+        <form id="form-signup">
+          <div class="form-group">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" class="form-control" placeholder="Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email Address</label>
+            <input type="email" id="signup-email" class="form-control" placeholder="name@domain.com" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Create Password</label>
+            <input type="password" id="signup-password" class="form-control" placeholder="Min. 6 characters" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Settings Modal -->
+  <div class="modal-overlay" id="profile-modal">
+    <div class="modal" style="max-width: 600px;">
+      <button class="modal-close" id="profile-modal-close">×</button>
+      <h2 style="margin-bottom: 8px;">Your Profile</h2>
+      <p class="text-secondary" style="margin-bottom: 24px;">Fill in your details. Pari will use these to generate personalized questions.</p>
+      
+      <!-- CV Upload + AI Auto-Fill -->
+      <div style="background:var(--bg-secondary);border:1px dashed var(--border-color);border-radius:12px;padding:16px;margin-bottom:20px;">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:200px;">
+            <label style="font-size:0.8rem;font-weight:600;color:var(--text-secondary);display:block;margin-bottom:6px;">📄 Upload CV / Resume</label>
+            <input type="file" id="cv-upload-input" accept=".pdf,.txt,.doc,.docx" style="font-size:0.85rem;width:100%;color:var(--text-primary);">
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-ai-autofill" style="white-space:nowrap;padding:10px 18px;">
+            🤖 AI Auto-Fill Profile
+          </button>
+        </div>
+        <p id="cv-upload-status" style="font-size:0.78rem;color:var(--text-secondary);margin-top:8px;margin-bottom:0;">Upload your CV and click "AI Auto-Fill" to let Grok extract your details automatically.</p>
+      </div>
+
+      <form id="form-profile">
+        <div class="profile-grid">
+          <div class="form-group">
+            <label for="prof-name">Full Name</label>
+            <input type="text" id="prof-name" class="form-control" required placeholder="Rahul Sharma">
+          </div>
+          <div class="form-group">
+            <label for="prof-education">Education / University</label>
+            <input type="text" id="prof-education" class="form-control" placeholder="B.Sc Hospitality Management">
+          </div>
+          <div class="form-group">
+            <label for="prof-degree">Degree</label>
+            <input type="text" id="prof-degree" class="form-control" placeholder="B.Sc">
+          </div>
+          <div class="form-group">
+            <label for="prof-branch">Branch / Major</label>
+            <input type="text" id="prof-branch" class="form-control" placeholder="Hospitality">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="prof-skills">Skills (Comma-separated)</label>
+          <input type="text" id="prof-skills" class="form-control" placeholder="Customer Service, Active Listening, Safety Protocols">
+        </div>
+        
+        <div class="form-group">
+          <label for="prof-projects">Key Projects</label>
+          <input type="text" id="prof-projects" class="form-control" placeholder="In-flight Crisis Management Case Study">
+        </div>
+        
+        <div class="form-group">
+          <label for="prof-internship">Internships / Experience</label>
+          <input type="text" id="prof-internship" class="form-control" placeholder="Guest Relations Executive at Jet Airways">
+        </div>
+        
+        <div class="form-group">
+          <label for="prof-achievements">Key Achievements</label>
+          <input type="text" id="prof-achievements" class="form-control" placeholder="Received Best Customer Support Recognition">
+        </div>
+        
+        <div class="form-group">
+          <label for="prof-interests">Interests & Hobbies</label>
+          <input type="text" id="prof-interests" class="form-control" placeholder="Aviation History, Travel blogging">
+        </div>
+        
+        <div class="profile-actions">
+          <button type="button" class="btn btn-secondary" id="btn-profile-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Entry Script Module -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
